@@ -3,6 +3,7 @@ const dino = document.querySelector('.dino');
 const background = document.querySelector('.background');
 
 let isJumping = false;
+let isGameOver = false;
 
 let position = 0;
 
@@ -41,13 +42,14 @@ function jump(){
 
 function createCactus(){
     const cactus = document.createElement('div');
-    let cactusPosition = 1000;
+    let cactusPosition = 1300;
     let randomTime = Math.random() * 6000;
 
+    if (isGameOver) return;
+    
     cactus.classList.add('cactus');
     cactus.style.left = 1000 + 'px';
     background.appendChild(cactus);
-
     let leftInterval = setInterval(() => {
         
         if (cactusPosition < -60){
